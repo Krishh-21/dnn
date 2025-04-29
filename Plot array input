@@ -1,0 +1,21 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+x = list(map(float, input("Enter x values separated by spaces: ").split()))
+y = list(map(float, input("Enter y values separated by spaces: ").split()))
+degree = int(input("Enter the degree of the polynomial: "))
+
+
+coeffs = np.polyfit(x, y, degree)
+poly = np.poly1d(coeffs)
+
+
+plt.scatter(x, y)
+x_line = np.linspace(min(x), max(x), 100)
+plt.plot(x_line, poly(x_line), color='red')
+plt.show()
+
+# Predict new value
+x_new = float(input("Enter an x value to predict y: "))
+print("Predicted y value:", poly(x_new))
